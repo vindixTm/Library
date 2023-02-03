@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+    <title>Library</title>
+  </head>
+  <body class="container">
+    <div class="header">
+      <div class="logo">Library</div>
+    </div>
+    <div class="bookDisplay">
+      <button class="newBook">
+        <img src="/icons/add.svg" alt="" class="svg">
+      </button>
+      <div class="popup">
+        <div class="popupTitle">
+          New Book
+          <button class="cancel">
+            <img src="./icons/whitesclose.svg" alt="" class="svg">
+          </button>
+        </div>
+        <form action="" method="post" id="newBookForm">
+          <input type="text" name="title" id="title" placeholder="title" required/>
+          <input type="text" name="author" id="author" placeholder="author" required/>
+          <input type="number" name="pages" id="pages" placeholder="pages" required/>
+          <div class="readCheckBox">
+            <label for="status">read</label>
+            <input type="checkbox" name="status" id="status" />
+          </div>
+        </form>
+        <button class="save" form="newBookForm">save</button>
+      </div>
+    </div>
+  </body>
+</html>
