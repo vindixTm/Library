@@ -2,23 +2,8 @@ const myLibrary = [];
 const popupForm = document.querySelector(".popup");
 const cancel = document.querySelector(".cancel");
 const newBook = document.querySelector(".newBook");
-const newBookT = document.querySelector('.newBookTab')
 const newBookForm = document.querySelector("#newBookForm");
 const display = document.querySelector(".bookDisplay");
-
-
-if (newBook) {
-  newBook.addEventListener("click", activate, false);
-}
-if (cancel) {
-  cancel.addEventListener("click", deactivate, false);
-}
-if (newBookForm) {
-  newBookForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    addBookToLibrary(e.target);
-  });
-}
 
 function Book(title, author, pages, status) {
   this.title = title;
@@ -26,21 +11,19 @@ function Book(title, author, pages, status) {
   this.pages = pages;
   this.status = status;
   this.info = function () {
-    console.log(title, "by ", author, ", ", pages, ", ", status);
+    // console.log(title, "by ", author, ", ", pages, ", ", status);
   };
 }
 
 function activate() {
   popupForm.classList.add("active");
-  newBook.classList.add('newBookTab')
-  display.classList.add('filled')
-  // display.removeChild(newBook);
- 
 }
 function deactivate() {
   popupForm.classList.remove("active");
-    
-  
+  if (myLibrary.length > 0) {
+    newBook.classList.add("newBookTab");
+    display.classList.add("filled");
+  }
 }
 function addBookToLibrary(form) {
   const formData = new FormData(form);
@@ -61,22 +44,21 @@ function addBookToLibrary(form) {
     const tabBottomSec = document.createElement("div");
     tabBottomSec.classList.add("tabBottomSec");
 
-    tabauthorLabel = document.createElement("div");
-    tabauthor = document.createElement("div");
+    const tabauthorLabel = document.createElement("div");
+    const tabauthor = document.createElement("div");
     tabauthor.classList.add("tabauthor");
-    tabpagesLabel = document.createElement("div");
-    tabpages = document.createElement("div");
+    const tabpagesLabel = document.createElement("div");
+    const tabpages = document.createElement("div");
     tabpages.classList.add("tabpages");
-    tabstatusLabel = document.createElement("div");
-    tabstatus = document.createElement("div");
+    const tabstatusLabel = document.createElement("div");
+    const tabstatus = document.createElement("div");
     tabstatus.classList.add("tabstatus");
-    tabEmptyDiv = document.createElement("div");
-    tabdelete = document.createElement("div");
+    const tabEmptyDiv = document.createElement("div");
+    const tabdelete = document.createElement("div");
     tabdelete.classList.add("tabdelete");
-    tabstatusCheckBoxLabel = document.createElement("div");
-    tabstatusCheckBox = document.createElement("input");
+    const tabstatusCheckBox = document.createElement("input");
     tabstatusCheckBox.type = "checkbox";
-    deleteIcon = document.createElement("img");
+    const deleteIcon = document.createElement("img");
     deleteIcon.src = "icons/delete.svg";
     deleteIcon.classList.add("delete");
     deleteIcon.addEventListener("click", () => {
@@ -102,8 +84,8 @@ function addBookToLibrary(form) {
     tabpagesLabel.textContent = "pages";
     tabstatusLabel.textContent = "read";
     tabTopSec.textContent = myLibrary[0].title;
-    tabauthor.textContent = ": " + myLibrary[0].author;
-    tabpages.textContent = ": " + myLibrary[0].pages;
+    tabauthor.textContent = `: ${myLibrary[0].author}`;
+    tabpages.textContent = `: ${myLibrary[0].pages}`;
 
     if (myLibrary[0].status === "on") {
       tabstatusCheckBox.checked = true;
@@ -115,7 +97,6 @@ function addBookToLibrary(form) {
       formValues.pages,
       formValues.status
     );
-
     const divTab = document.createElement("div");
     divTab.classList.add("booktab");
     const tabTopSec = document.createElement("div");
@@ -123,27 +104,26 @@ function addBookToLibrary(form) {
     const tabBottomSec = document.createElement("div");
     tabBottomSec.classList.add("tabBottomSec");
 
-    tabauthorLabel = document.createElement("div");
-    tabauthor = document.createElement("div");
+    const tabauthorLabel = document.createElement("div");
+    const tabauthor = document.createElement("div");
     tabauthor.classList.add("tabauthor");
-    tabpagesLabel = document.createElement("div");
-    tabpages = document.createElement("div");
+    const tabpagesLabel = document.createElement("div");
+    const tabpages = document.createElement("div");
     tabpages.classList.add("tabpages");
-    tabstatusLabel = document.createElement("div");
-    tabstatus = document.createElement("div");
+    const tabstatusLabel = document.createElement("div");
+    const tabstatus = document.createElement("div");
     tabstatus.classList.add("tabstatus");
-    tabEmptyDiv = document.createElement("div");
-    tabdelete = document.createElement("div");
+    const tabEmptyDiv = document.createElement("div");
+    const tabdelete = document.createElement("div");
     tabdelete.classList.add("tabdelete");
-    tabstatusCheckBoxLabel = document.createElement("div");
-    tabstatusCheckBox = document.createElement("input");
+    const tabstatusCheckBox = document.createElement("input");
     tabstatusCheckBox.type = "checkbox";
-    deleteIcon = document.createElement("img");
+    const deleteIcon = document.createElement("img");
     deleteIcon.src = "icons/delete.svg";
     deleteIcon.classList.add("delete");
     deleteIcon.addEventListener("click", () => {
       display.removeChild(divTab);
-      myLibrary.splice(1, myLibrary.length);
+      myLibrary.splice(0, 1);
     });
 
     display.appendChild(divTab);
@@ -164,14 +144,27 @@ function addBookToLibrary(form) {
     tabpagesLabel.textContent = "pages";
     tabstatusLabel.textContent = "read";
     tabTopSec.textContent = myLibrary[myLibrary.length - 1].title;
-    tabauthor.textContent = ": " + myLibrary[myLibrary.length - 1].author;
-    tabpages.textContent = ": " + myLibrary[myLibrary.length - 1].pages;
+    tabauthor.textContent = `: ${myLibrary[myLibrary.length - 1].author}`;
+    tabpages.textContent = `: ${myLibrary[myLibrary.length - 1].pages}`;
 
     if (myLibrary[myLibrary.length - 1].status === "on") {
       tabstatusCheckBox.checked = true;
     }
   }
 
-  console.log(myLibrary);
+  // console.log(myLibrary);
   newBookForm.reset();
+}
+
+if (newBook) {
+  newBook.addEventListener("click", activate, false);
+}
+if (cancel) {
+  cancel.addEventListener("click", deactivate, false);
+}
+if (newBookForm) {
+  newBookForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    addBookToLibrary(e.target);
+  });
 }

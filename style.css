@@ -55,9 +55,9 @@ input:focus {
   align-items: center;
 }
 .header .logo {
-  width: 293px;
+  width: 320px;
   height: 100px;
-  background-color: #958765;
+  background-color: #8a7c5e;
   font-style: bold;
   font-size: 50px;
   display: flex;
@@ -76,7 +76,7 @@ input:focus {
 }
 .bookDisplay {
   width: 100vw;
-  height: 100vh;
+  /* height: 100vh; */
   border: none;
   display: flex;
   justify-content: center;
@@ -94,7 +94,7 @@ input:focus {
   height: 50px;
   border-radius: 20px;
   border: 0;
-  background-color: #958765;
+  background-color: #8a7c5e;
   margin-left: auto;
 }
 
@@ -114,7 +114,7 @@ input:focus {
   transform: translate(-50%, -50%) scale(1.25);
   
   opacity: 0;
-  background-color: #958765;
+  background-color: #8a7c5e;
   width: 392px;
   height: 570px;
   border-radius: 18px;
@@ -212,8 +212,8 @@ input:focus {
  }
  .filled {
   display: grid;
+  justify-content: start;
   grid-template-columns:repeat(auto-fit, minmax(220px,320px));
   gap: 20px;
-  overflow: scroll;
   margin: 50px 0 0 0;
 }
