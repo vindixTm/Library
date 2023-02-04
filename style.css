@@ -48,7 +48,7 @@ input:focus {
 }
 .container {
   display: grid;
-  grid-template-rows: 100px 5fr;
+  grid-template-rows: 100px 3fr;
 }
 .header {
   display: flex;
@@ -82,7 +82,6 @@ input:focus {
   justify-content: center;
   align-items: center;
 }
-
 .popupTitle {
   font-size: 30px;
   width: 100%;
@@ -193,3 +192,28 @@ input:focus {
   width: 35px;
   height: 35px;
  }
+
+ .newBookTab {
+  padding: 20px;
+  width: 320px;
+  height: 250px;
+  border-radius: 8px;
+
+  background-color: #9587656c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ }
+
+ .newBookTab .svg {
+  width: 65px;
+  height: 65px;
+  border-radius: 8px;
+ }
+ .filled {
+  display: grid;
+  grid-template-columns:repeat(auto-fit, minmax(220px,320px));
+  gap: 20px;
+  overflow: scroll;
+  margin: 50px 0 0 0;
+}

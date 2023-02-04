@@ -2,9 +2,9 @@ const myLibrary = [];
 const popupForm = document.querySelector(".popup");
 const cancel = document.querySelector(".cancel");
 const newBook = document.querySelector(".newBook");
+const newBookT = document.querySelector('.newBookTab')
 const newBookForm = document.querySelector("#newBookForm");
 const display = document.querySelector(".bookDisplay");
-
 
 
 if (newBook) {
@@ -32,9 +32,15 @@ function Book(title, author, pages, status) {
 
 function activate() {
   popupForm.classList.add("active");
+  newBook.classList.add('newBookTab')
+  display.classList.add('filled')
+  // display.removeChild(newBook);
+ 
 }
 function deactivate() {
   popupForm.classList.remove("active");
+    
+  
 }
 function addBookToLibrary(form) {
   const formData = new FormData(form);
@@ -47,7 +53,6 @@ function addBookToLibrary(form) {
       formValues.pages,
       formValues.status
     );
-
 
     const divTab = document.createElement("div");
     divTab.classList.add("booktab");
@@ -74,12 +79,11 @@ function addBookToLibrary(form) {
     deleteIcon = document.createElement("img");
     deleteIcon.src = "icons/delete.svg";
     deleteIcon.classList.add("delete");
-    deleteIcon.addEventListener('click', () => {
+    deleteIcon.addEventListener("click", () => {
       display.removeChild(divTab);
-      myLibrary.splice(0, 1)
-    })
+      myLibrary.splice(0, 1);
+    });
 
-   
     display.appendChild(divTab);
     divTab.appendChild(tabTopSec);
     divTab.appendChild(tabBottomSec);
@@ -104,7 +108,6 @@ function addBookToLibrary(form) {
     if (myLibrary[0].status === "on") {
       tabstatusCheckBox.checked = true;
     }
-    
   } else {
     myLibrary[myLibrary.length] = new Book(
       formValues.title,
@@ -112,7 +115,6 @@ function addBookToLibrary(form) {
       formValues.pages,
       formValues.status
     );
-    
 
     const divTab = document.createElement("div");
     divTab.classList.add("booktab");
@@ -139,12 +141,11 @@ function addBookToLibrary(form) {
     deleteIcon = document.createElement("img");
     deleteIcon.src = "icons/delete.svg";
     deleteIcon.classList.add("delete");
-    deleteIcon.addEventListener('click', () => {
+    deleteIcon.addEventListener("click", () => {
       display.removeChild(divTab);
-      myLibrary.splice(1, myLibrary.length)
-    })
+      myLibrary.splice(1, myLibrary.length);
+    });
 
-   
     display.appendChild(divTab);
     divTab.appendChild(tabTopSec);
     divTab.appendChild(tabBottomSec);
@@ -169,7 +170,6 @@ function addBookToLibrary(form) {
     if (myLibrary[myLibrary.length - 1].status === "on") {
       tabstatusCheckBox.checked = true;
     }
-
   }
 
   console.log(myLibrary);
